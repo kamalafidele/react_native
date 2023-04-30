@@ -14,8 +14,15 @@ import Icon from './components/Icon';
 import ListItem from './components/ListItem';
 import AccountScreen from './components/screens/AccountScreen';
 import ListingsScreen from './components/screens/ListingsScreen';
+import AppInputText from './components/AppInputText';
+import Switches from './components/Switches';
+import AppPicker from './components/AppPicker';
+import data from './config/data';
+import { useState } from 'react';
 
 export default function App() {
+  const [country, setCountry] = useState();
+  
   const { height, width, scale } = Dimensions.get('screen');
   const orientation = useDeviceOrientation();
 
@@ -38,7 +45,16 @@ export default function App() {
       {/* <ListingDetailsScreen/> */}
       {/* <MessagesScreen/> */}
       {/* <AccountScreen/> */}
-      <ListingsScreen/>
+      {/* <ListingsScreen/> */}
+      {/* <Switches/> */}
+      <AppPicker 
+        selectedItem={country}
+        onSelectItem={item => setCountry(item)}
+        iconName={'apps'} 
+        placeholder={'Country'} 
+        items={data.countries}
+      />
+      <AppInputText iconName={'email'} placeholder='Username' />
     </SafeAreaView>
   );
 }
@@ -48,8 +64,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.LIGHT,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   img: {
     width: 200,
