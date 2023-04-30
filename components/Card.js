@@ -13,8 +13,7 @@ const Card = ({ title, subtitle, imagePath }) => {
 
 const styles = StyleSheet.create({
     cardContainer: {
-        width: '95%',
-        height: '40%',
+        width: '100%',
         backgroundColor: colors.WHITE,
         borderRadius: 10,
         margin: 10,

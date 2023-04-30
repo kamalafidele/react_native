@@ -11,6 +11,9 @@ import colors from './config/colors';
 import ListingDetailsScreen from './components/screens/ListingDetailsScreen'
 import MessagesScreen from './components/screens/MessagesScreen';
 import Icon from './components/Icon';
+import ListItem from './components/ListItem';
+import AccountScreen from './components/screens/AccountScreen';
+import ListingsScreen from './components/screens/ListingsScreen';
 
 export default function App() {
   const { height, width, scale } = Dimensions.get('screen');
@@ -34,7 +37,8 @@ export default function App() {
       <Card title={"Couch in great condition"} subtitle={"$1200"} imagePath={"https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg"}/> */}
       {/* <ListingDetailsScreen/> */}
       {/* <MessagesScreen/> */}
-      <Icon name={'email'} size={40} iconColor='blue' backgroundColor='white'/>
+      {/* <AccountScreen/> */}
+      <ListingsScreen/>
     </SafeAreaView>
   );
 }
