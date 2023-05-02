@@ -19,6 +19,7 @@ import Switches from './components/Switches';
 import AppPicker from './components/AppPicker';
 import data from './config/data';
 import { useState } from 'react';
+import LoginScreen from './components/screens/LoginScreen';
 
 export default function App() {
   const [country, setCountry] = useState();
@@ -47,14 +48,15 @@ export default function App() {
       {/* <AccountScreen/> */}
       {/* <ListingsScreen/> */}
       {/* <Switches/> */}
-      <AppPicker 
+      {/* <AppPicker 
         selectedItem={country}
         onSelectItem={item => setCountry(item)}
         iconName={'apps'} 
         placeholder={'Country'} 
         items={data.countries}
-      />
-      <AppInputText iconName={'email'} placeholder='Username' />
+      /> */}
+      {/* <AppInputText iconName={'email'} placeholder='Username' /> */}
+      <LoginScreen/>
     </SafeAreaView>
   );
 }
