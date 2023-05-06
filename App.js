@@ -20,6 +20,7 @@ import AppPicker from './components/AppPicker';
 import data from './config/data';
 import { useState } from 'react';
 import LoginScreen from './components/screens/LoginScreen';
+import ImagePickers from './components/ImagePickers';
 
 export default function App() {
   const [country, setCountry] = useState();
@@ -56,7 +57,8 @@ export default function App() {
         items={data.countries}
       /> */}
       {/* <AppInputText iconName={'email'} placeholder='Username' /> */}
-      <LoginScreen/>
+      {/* <LoginScreen/> */}
+      <ImagePickers/>
     </SafeAreaView>
   );
 }
