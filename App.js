@@ -1,5 +1,7 @@
 import { StyleSheet, Text, SafeAreaView, Image, Button, Platform, StatusBar, View, Dimensions } from 'react-native';
 import { useDeviceOrientation } from '@react-native-community/hooks';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
 import Touchables from './components/Touchables';
 import Buttons from './components/Buttons';
@@ -22,6 +24,36 @@ import { useState } from 'react';
 import LoginScreen from './components/screens/LoginScreen';
 import ImagePickers from './components/ImagePickers';
 
+const Link = () => {
+  const navigation = useNavigation()
+  return <Button title='Click' onPress={() => navigation.navigate('tweetdetails', { title: 'Fast Growing' })}/>
+}
+
+const Tweets = ({ navigation }) => (
+  <View>
+    <Text>Tweets</Text>
+    <Link/>
+  </View>
+);
+
+const TweetDetails = ({ route }) => (
+  <View>
+    <Text>Details {route.params.title}</Text>
+  </View>
+);
+
+const Stack = createNativeStackNavigator();
+const StackNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen 
+    name='tweets' 
+    options={{ title: 'Tweets', headerStyle: { backgroundColor: 'dodgerblue' }, headerTintColor: 'white', headerTitleAlign: 'center' }} 
+    component={Tweets}
+    />
+    <Stack.Screen name='tweetdetails' options={({ route }) => ({ title: route.params.title })} component={TweetDetails}/>
+  </Stack.Navigator>
+)
+
 export default function App() {
   const [country, setCountry] = useState();
   
@@ -29,37 +61,41 @@ export default function App() {
   const orientation = useDeviceOrientation();
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* <Button title='Click me'/>
-      <View style={{ backgroundColor: 'dodgerblue', width: '100%', height: orientation === 'portrait' ? 70 : '100%', marginTop: 10 }}>
+    <NavigationContainer>
+       <StackNavigator/>
+    </NavigationContainer>
+    // <SafeAreaView style={styles.container}>
+    //   {/* <Button title='Click me'/>
+    //   <View style={{ backgroundColor: 'dodgerblue', width: '100%', height: orientation === 'portrait' ? 70 : '100%', marginTop: 10 }}>
 
-      </View> */}
+    //   </View> */}
 
-      {/* <FlexBox/> */}
-      {/* <Image source={require('./assets/icon.png')} style={styles.img}/> */}
-      {/* <Touchables/> */}
-      {/* <Buttons/> */}
+    //   {/* <FlexBox/> */}
+    //   {/* <Image source={require('./assets/icon.png')} style={styles.img}/> */}
+    //   {/* <Touchables/> */}
+    //   {/* <Buttons/> */}
 
-      {/* <WelcomeScreen1/> */}
-      {/* <ViewImageScreen/> */}
-      {/* <Card title={"Red Jacket for sale"} subtitle={"$100"} imagePath={"https://img.freepik.com/premium-photo/woman-happy-red_1303-8698.jpg"}/>
-      <Card title={"Couch in great condition"} subtitle={"$1200"} imagePath={"https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg"}/> */}
-      {/* <ListingDetailsScreen/> */}
-      {/* <MessagesScreen/> */}
-      {/* <AccountScreen/> */}
-      {/* <ListingsScreen/> */}
-      {/* <Switches/> */}
-      {/* <AppPicker 
-        selectedItem={country}
-        onSelectItem={item => setCountry(item)}
-        iconName={'apps'} 
-        placeholder={'Country'} 
-        items={data.countries}
-      /> */}
-      {/* <AppInputText iconName={'email'} placeholder='Username' /> */}
-      {/* <LoginScreen/> */}
-      <ImagePickers/>
-    </SafeAreaView>
+    //   {/* <WelcomeScreen1/> */}
+    //   {/* <ViewImageScreen/> */}
+    //   {/* <Card title={"Red Jacket for sale"} subtitle={"$100"} imagePath={"https://img.freepik.com/premium-photo/woman-happy-red_1303-8698.jpg"}/>
+    //   <Card title={"Couch in great condition"} subtitle={"$1200"} imagePath={"https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg"}/> */}
+    //   {/* <ListingDetailsScreen/> */}
+    //   {/* <MessagesScreen/> */}
+    //   {/* <AccountScreen/> */}
+    //   {/* <ListingsScreen/> */}
+    //   {/* <Switches/> */}
+    //   {/* <AppPicker 
+    //     selectedItem={country}
+    //     onSelectItem={item => setCountry(item)}
+    //     iconName={'apps'} 
+    //     placeholder={'Country'} 
+    //     items={data.countries}
+    //   /> */}
+    //   {/* <AppInputText iconName={'email'} placeholder='Username' /> */}
+    //   {/* <LoginScreen/> */}
+    //   {/* <ImagePickers/> */}
+
+    // </SafeAreaView>
   );
 }
 

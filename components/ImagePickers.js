@@ -10,8 +10,8 @@ function ImagePickers(props) {
   const [imageUrls, setImageUrls] = useState([]);
 
   const requestPermission = async () => {
-    const result = await ImagePicker.requestCameraPermissionsAsync();
-    if (!result.granted)
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+    if (!granted)
       alert("You need to enable permission to access the library");
   };
 

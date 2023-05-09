@@ -3,7 +3,6 @@ import { Alert, Image, StyleSheet, TouchableNativeFeedback, View } from "react-n
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 function ImageInput({ imageUri, onChangeImage }) {
   const handlePress = () => {
