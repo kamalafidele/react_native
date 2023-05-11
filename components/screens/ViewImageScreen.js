@@ -1,8 +1,10 @@
 import { View, Image, StyleSheet, TouchableNativeFeedback } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Screen from "./Screen";
 
 const ViewImageScreen = () => {
     return (
+        <Screen>
         <View style = {styles.container}>
             <View style = {styles.buttons}>
                 <View style = {styles.closeButton}>
@@ -16,6 +18,7 @@ const ViewImageScreen = () => {
                 <Image source={require("../../assets/THANK_YOU.jpg")} resizeMode="contain"/>
             </View>
         </View>
+        </Screen>
     )
 }
 

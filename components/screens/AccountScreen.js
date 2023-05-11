@@ -4,6 +4,7 @@ import ListItem from '../ListItem';
 import colors from '../../config/colors';
 import Icon from '../Icon';
 import ListItemSeparator from '../ListItemSeparator';
+import Screen from './Screen';
 
 const menuItems = [
     {
@@ -25,6 +26,7 @@ const menuItems = [
 ]
 function AccountScreen(props) {
     return (
+        <Screen>
         <View style={styles.screen}>
         <View style={styles.container}>
             <ListItem 
@@ -45,6 +47,7 @@ function AccountScreen(props) {
             <ListItem title={'Log out'} IconComponent={<Icon name={'logout'} backgroundColor={colors.SECONDARY}/>}/>
         </View>
         </View>
+        </Screen>
     );
 }
 

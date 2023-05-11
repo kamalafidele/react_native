@@ -3,6 +3,7 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import ListItem from '../ListItem';
 import ListItemSeparator from '../ListItemSeparator';
 import Card from '../Card';
+import Screen from './Screen';
 
 const listings = [
     {
@@ -20,6 +21,7 @@ const listings = [
 ]
 function ListingsScreen(props) {
     return (
+        <Screen>
         <View style={styles.container}>
             <FlatList
             data={listings}
@@ -28,6 +30,7 @@ function ListingsScreen(props) {
             ItemSeparatorComponent={ListItemSeparator}
             />
         </View>
+        </Screen>
     );
 }
 

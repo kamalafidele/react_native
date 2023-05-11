@@ -1,9 +1,11 @@
 import { View, StyleSheet, Image, Text } from "react-native";
 import colors from "../../config/colors";
 import ListItem from "../ListItem";
+import Screen from "./Screen";
 
 const ListingDetailsScreen = () => {
     return (
+        <Screen>
         <View>
             <Image source={{ uri: 'https://img.freepik.com/premium-photo/woman-happy-red_1303-8698.jpg'}} style={styles.img}/>
             <View style={styles.detailsContainer}>
@@ -14,6 +16,7 @@ const ListingDetailsScreen = () => {
                </View>
             </View>
         </View>
+        </Screen>
     )
 }
 

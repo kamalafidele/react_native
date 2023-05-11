@@ -1,7 +1,6 @@
 import { StyleSheet, Text, SafeAreaView, Image, Button, Platform, StatusBar, View, Dimensions } from 'react-native';
 import { useDeviceOrientation } from '@react-native-community/hooks';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import Touchables from './components/Touchables';
 import Buttons from './components/Buttons';
@@ -23,36 +22,10 @@ import data from './config/data';
 import { useState } from 'react';
 import LoginScreen from './components/screens/LoginScreen';
 import ImagePickers from './components/ImagePickers';
+import AuthNavigator from './navigation/AuthNavigator';
+import navigationThem from './navigation/navigationTheme';
+import AppNavigator from './navigation/AppNavigator';
 
-const Link = () => {
-  const navigation = useNavigation()
-  return <Button title='Click' onPress={() => navigation.navigate('tweetdetails', { title: 'Fast Growing' })}/>
-}
-
-const Tweets = ({ navigation }) => (
-  <View>
-    <Text>Tweets</Text>
-    <Link/>
-  </View>
-);
-
-const TweetDetails = ({ route }) => (
-  <View>
-    <Text>Details {route.params.title}</Text>
-  </View>
-);
-
-const Stack = createNativeStackNavigator();
-const StackNavigator = () => (
-  <Stack.Navigator>
-    <Stack.Screen 
-    name='tweets' 
-    options={{ title: 'Tweets', headerStyle: { backgroundColor: 'dodgerblue' }, headerTintColor: 'white', headerTitleAlign: 'center' }} 
-    component={Tweets}
-    />
-    <Stack.Screen name='tweetdetails' options={({ route }) => ({ title: route.params.title })} component={TweetDetails}/>
-  </Stack.Navigator>
-)
 
 export default function App() {
   const [country, setCountry] = useState();
@@ -61,8 +34,9 @@ export default function App() {
   const orientation = useDeviceOrientation();
 
   return (
-    <NavigationContainer>
-       <StackNavigator/>
+    <NavigationContainer theme={navigationThem}>
+       {/* <AuthNavigator/> */}
+       <AppNavigator/>
     </NavigationContainer>
     // <SafeAreaView style={styles.container}>
     //   {/* <Button title='Click me'/>

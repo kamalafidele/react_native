@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import ListItem from "../ListItem";
 import ListItemSeparator from "../ListItemSeparator";
 import ListItemDeleteAction from "../ListItemDeleteAction";
+import Screen from "./Screen";
 
 let initialMessages = [
   {
@@ -33,6 +34,7 @@ function MessagesScreen(props) {
   };
 
   return (
+    <Screen>
     <FlatList
       data={messages}
       keyExtractor={(message) => message.id.toString()}
@@ -52,6 +54,7 @@ function MessagesScreen(props) {
       refreshing={refreshing}
       onRefresh={() => setMessages(initialMessages)}
     />
+    </Screen>
   );
 }
 
