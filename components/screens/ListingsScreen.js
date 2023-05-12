@@ -19,14 +19,17 @@ const listings = [
         image: 'https://cdn.thewirecutter.com/wp-content/media/2022/05/sofa-buying-guide-2048px-67.jpg',
     },
 ]
-function ListingsScreen(props) {
+function ListingsScreen({ navigation }) {
+
     return (
         <Screen>
         <View style={styles.container}>
             <FlatList
             data={listings}
             keyExtractor={item => item.id}
-            renderItem={({ item }) => <Card title={item.title} subtitle={'$' + item.price} imagePath={item.image}/>}
+            renderItem={({ item }) => (
+            <Card title={item.title} subtitle={'$' + item.price} imagePath={item.image} onPress={() => navigation.navigate('ListingDetails', item)}/>
+            )}
             ItemSeparatorComponent={ListItemSeparator}
             />
         </View>

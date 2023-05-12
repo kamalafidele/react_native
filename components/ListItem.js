@@ -10,7 +10,7 @@ import { Swipeable, GestureHandlerRootView } from "react-native-gesture-handler"
 import colors from "../config/colors";
 
 
-const ListItem = ({ title, subtitle, imagePath, IconComponent,onPress, renderRightActions }) => {
+const ListItem = ({ title, subtitle, imagePath, IconComponent, onPress, renderRightActions }) => {
   return (
     <GestureHandlerRootView>
     <Swipeable renderRightActions={renderRightActions}>

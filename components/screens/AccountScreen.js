@@ -14,6 +14,7 @@ const menuItems = [
             name: 'format-list-bulleted',
             backgroundColor: colors.PRIMARY,
         },
+        targetScreen: 'Listings'
     },
     {
         id: 2,
@@ -22,9 +23,10 @@ const menuItems = [
             name: 'email',
             backgroundColor: colors.PRIMARY,
         },
+        targetScreen: 'Messages',
     },
 ]
-function AccountScreen(props) {
+function AccountScreen({ navigation }) {
     return (
         <Screen>
         <View style={styles.screen}>
@@ -39,7 +41,9 @@ function AccountScreen(props) {
             <FlatList
             data={menuItems}
             keyExtractor={item => item.id}
-            renderItem={({ item }) => <ListItem title={item.title} IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>}/>}
+            renderItem={({ item }) => (
+            <ListItem title={item.title} IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor}/>} onPress={() => navigation.navigate(item.targetScreen)}/>
+            )}
             ItemSeparatorComponent={ListItemSeparator}
             />
         </View>

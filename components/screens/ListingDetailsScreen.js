@@ -3,14 +3,16 @@ import colors from "../../config/colors";
 import ListItem from "../ListItem";
 import Screen from "./Screen";
 
-const ListingDetailsScreen = () => {
+const ListingDetailsScreen = ({ route }) => {
+    const listing = route.params;
+
     return (
         <Screen>
         <View>
-            <Image source={{ uri: 'https://img.freepik.com/premium-photo/woman-happy-red_1303-8698.jpg'}} style={styles.img}/>
+            <Image source={{ uri: listing.image }} style={styles.img}/>
             <View style={styles.detailsContainer}>
-               <Text style={styles.title}>Red jacket for sale</Text>
-               <Text style={styles.subtitle}>$100</Text>
+               <Text style={styles.title}>{ listing.title }</Text>
+               <Text style={styles.subtitle}>{ '$' + listing.price}</Text>
                <View style={styles.userContainer}>
                   <ListItem title={'Bella Ramsey'} subtitle={'4 Listings'} imagePath={{uri: 'https://people.com/thmb/HGNKjq-sOMsmp8fY-DYG3BqUPaY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(919x524:921x526)/bella-ramsey-1-e41e96a038c644e89efbe0a568817dec.jpg'}}/>
                </View>
