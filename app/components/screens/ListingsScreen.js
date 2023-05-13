@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, StyleSheet, Button } from 'react-native';
+import { FlatList, View, StyleSheet, ActivityIndicator } from 'react-native';
 
 
 import ListItemSeparator from '../ListItemSeparator';
@@ -12,13 +12,17 @@ import AppButton from '../AppButton';
 function ListingsScreen({ navigation }) {
     const [listings, setListings] = useState([]);
     const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         loadListings();
     }, []);
 
     const loadListings = async () => {
+        setLoading(true);
         const response = await listingsApi.getListings();
+        setLoading(false);
+
         if (!response.ok) return setError(true);
         
         setError(false);
@@ -32,6 +36,8 @@ function ListingsScreen({ navigation }) {
             <AppText>Couldn't retrieve the listings</AppText>
             <AppButton title='Retry' onPress={loadListings}/>
             </> }
+
+            <ActivityIndicator animating={loading} size={'large'}/>
             <FlatList
             data={listings}
             keyExtractor={item => item.id}

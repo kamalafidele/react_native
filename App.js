@@ -9,8 +9,6 @@ import AppNavigator from './app/navigation/AppNavigator';
 
 
 export default function App() {
-  const [country, setCountry] = useState();
-  
   const { height, width, scale } = Dimensions.get('screen');
   const orientation = useDeviceOrientation();
 
