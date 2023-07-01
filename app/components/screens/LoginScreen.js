@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { Formik } from "formik";
 import * as Yup from 'yup';
+import jwtDecode from "jwt-decode";
 
 import AppInputText from "../AppInputText";
 import AppButton from "../AppButton";
 import AppText from "../AppText";
 import colors from "../../config/colors";
 import Screen from "./Screen";
+import authApi from "../../api/auth";
+import AuthContext from "../../auth/context";
+import AuthStorage from "../../auth/storage";
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
 });
 
-function LoginScreen() {
-    const handleLogin = (data) => {
-        console.log(data);
+function LoginScreen({ navigation }) {
+    const authContext = useContext(AuthContext);
+    
+    const handleLogin = async ({ email, password }) => {
+      const result = await authApi.login(email, password);
+      if (result.ok) {
+        const decoded = jwtDecode(result.data.token);
+        authContext.setUser(decoded.user);
+        
+        AuthStorage.storeToken(result.data.token);
+      }
     }
 
   return (

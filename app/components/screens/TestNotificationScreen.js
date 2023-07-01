@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device'
+import AppButton from '../AppButton';
 
 Notifications.setNotificationHandler({
     handleNotification:  async () => ({
